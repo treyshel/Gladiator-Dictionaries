@@ -44,7 +44,7 @@ def heal(gladiator):
 def is_dead(gladiator):
 ```
 
-- Returns True iff gladiator has at least 1 health
+- Returns True iff gladiator has no health
 
 ## Shell
 
