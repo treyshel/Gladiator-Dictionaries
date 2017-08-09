@@ -53,3 +53,7 @@ Use the functions you've created in `core.py` to build the shell for actually do
 ## Disk
 
 No disk interaction is required for this assignment.
+
+# Example Output
+
+![Example Output](./example_output.png)
