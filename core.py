@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import randint
 
 
 def new_gladiator(health, rage, damage_low, damage_high):
@@ -20,6 +20,7 @@ def attack(attacker, defender):
         defender['health'] -= damage_dealt
         attacker['rage'] += 15
         message = '\nHIT OF {}'.format(damage_dealt)
+    defender['health'] = max(0, defender['health'])
     return message
 
 
@@ -43,3 +44,16 @@ def rand_damage(damage_1, damage_2):
 
 def pass_turn(gladiator):
     gladiator['rage'] += 30
+
+
+def stab(defender):
+    if defender['health'] <= 10:
+        defender['health'] -= 10
+    defender['health'] = max(0, defender['health'])
+
+
+def mega_kick(attacker, defender):
+    if attacker['rage'] >= 75:
+        defender['health'] -= 35
+        attacker['rage'] = 0
+    defender['health'] = max(0, defender['health'])
