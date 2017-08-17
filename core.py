@@ -53,22 +53,14 @@ def stab(defender):
 
 
 def mega_kick(attacker, defender):
-    if attacker['rage'] >= 75:
+    if attacker['rage'] >= 60:
         defender['health'] -= 35
         attacker['rage'] = 0
     defender['health'] = max(0, defender['health'])
 
 
-def available_computer_decision(attacker, defender):
-    if attacker['rage'] >= 15 and attacker['health'] <= 95 and attacker['rage'] >= 75 and defender['health'] <= 10:
-        return choice(['P', 'S', 'C', 'M', 'H'])
-    elif attacker['rage'] >= 15 and defender['health'] <= 10:
-        return choice(['P', 'S', 'C', 'H'])
-    elif attacker['rage'] >= 75 and attacker['health'] <= 10:
-        return choice(['P', 'S', 'C', 'H'])
-    elif attacker['rage'] < 15 and defender['health'] <= 10:
-        return choice(['P', 'C', 'S'])
-    elif attacker['rage'] >= 15 and attacker['health'] <= 95:
-        return choice(['P', 'S'])
-    else:
-        return ['P']
+def available_computer_decision(attacker):
+    if attacker['rage'] >= 15 and attacker['health'] <= 95:
+        return choice(['P', 'H', 'S'])
+    elif attacker['rage'] >= 60:
+        return choice(['P', 'H', 'S', 'M'])
