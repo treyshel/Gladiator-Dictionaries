@@ -15,7 +15,7 @@ def attack(attacker, defender):
     if randint(1, 100) <= attacker['rage']:
         defender['health'] -= (2 * damage_dealt)
         attacker['rage'] = 0
-        message = '\nCRIT HIT OF {}'.format(damage_dealt)
+        message = '\nCRIT HIT OF {}'.format(2 * damage_dealt)
     else:
         defender['health'] -= damage_dealt
         attacker['rage'] += 15
@@ -37,9 +37,9 @@ def is_dead(gladiator):
 
 
 def rand_damage(damage_1, damage_2):
-    damage_1 = randint(5, 25)
-    damage_2 = randint(5, 25)
-    return min(damage_1, damage_2), max(damage_1, damage_2)
+    d1 = randint(damage_1, damage_2)
+    d2 = randint(damage_1, damage_2)
+    return min(d1, d2), max(d1, d2)
 
 
 def pass_turn(gladiator):
@@ -57,10 +57,3 @@ def mega_kick(attacker, defender):
         defender['health'] -= 35
         attacker['rage'] = 0
     defender['health'] = max(0, defender['health'])
-
-
-def available_computer_decision(attacker):
-    if attacker['rage'] >= 15 and attacker['health'] <= 95:
-        return choice(['P', 'H', 'S'])
-    elif attacker['rage'] >= 60:
-        return choice(['P', 'H', 'S', 'M'])
