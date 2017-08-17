@@ -47,3 +47,37 @@ def test_attack():
     attack(attacker, defender)
     assert attacker['rage'] == 65 or attacker['rage'] == 0
     assert defender['health'] <= 55 and defender['health'] >= 25
+
+
+def test_pass_turn():
+    gladiator = {'health': 100, 'rage': 0, 'damage low': 12, 'damage high': 12}
+    pass_turn(gladiator)
+    expect = {'health': 100, 'rage': 30, 'damage low': 12, 'damage high': 12}
+    assert gladiator == expect
+
+
+def test_stab():
+    gladiator = {'health': 10, 'rage': 0, 'damage low': 8, 'damage high': 8}
+    stab(gladiator)
+    expect = {'health': 0, 'rage': 0, 'damage low': 8, 'damage high': 8}
+    assert gladiator == expect
+
+
+def test_mega_kick():
+    attacker = {'health': 100, 'rage': 60, 'damage low': 12, 'damage high': 12}
+    defender = {'health': 45, 'rage': 10, 'damage low': 12, 'damage high': 12}
+    mega_kick(attacker, defender)
+    expect_attacker = {
+        'health': 100,
+        'rage': 0,
+        'damage low': 12,
+        'damage high': 12
+    }
+    expect_defender = {
+        'health': 10,
+        'rage': 10,
+        'damage low': 12,
+        'damage high': 12
+    }
+    assert attacker == expect_attacker
+    assert defender == expect_defender
