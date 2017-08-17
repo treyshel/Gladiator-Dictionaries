@@ -32,6 +32,19 @@ def glad_2(gladiator_2):
             'damage low'], gladiator_2['damage high']))
 
 
+def available_computer_decision(attacker, defender):
+    if defender['health'] <= 10:
+        return choice(['P', 'S', 'C'])
+    elif defender['health'] <= 10 and attacker['rage'] >= 15:
+        return choice('P', 'H', 'S')
+    elif attacker['health'] <= 95:
+        return choice(['P', 'H', 'S'])
+    elif attacker['health'] >= 60:
+        return choice(['M'])
+    else:
+        return choice(['P'])
+
+
 def one_player():
     min_hit_1, max_hit_1 = rand_damage(5, 25)
     min_hit_2, max_hit_2 = rand_damage(10, 20)
@@ -69,7 +82,7 @@ def one_player():
         #computer
         print('\nYour opponent is attacking...')
         time.sleep(2.5)
-        choice = available_computer_decision(gladiator_2)
+        choice = available_computer_decision(gladiator_2, gladiator_1)
         if choice == 'P':
             print(attack(gladiator_2, gladiator_1))
         elif choice == 'C':
