@@ -6,7 +6,7 @@ import time
 def get_decision(glad):
     while True:
         s = input(
-            '\nGladiator {}... What would you like to do?\n\n-- [P]UNCH (random damage from your high and low damage)\n-- [C]UT (damage of 10 when opponent health <= 10)\n-- [M]EGA KICK (damage of 35 when rage >= 75)\n-- [S]KIP (gives you +30 rage)\n-- [H]EAL (15 rage? get +5 to your HP)\n-- [Q]UIT\n'.
+            '\nGladiator {}... What would you like to do?\n\n-- [P]UNCH (random damage from your high and low damage)\n-- [C]UT (damage of 10 when opponent health <= 10)\n-- [M]EGA KICK (damage of 35 when rage >= 60)\n-- [S]KIP (gives you +30 rage)\n-- [H]EAL (15 rage? get +5 to your HP)\n-- [Q]UIT\n'.
             format(glad)).upper().strip()
         if s in ['P', 'C', 'M', 'S', 'H']:
             return s
@@ -67,9 +67,9 @@ def one_player():
             )
             exit()
         #computer
-        print('\nYour opponent is attacking...\n')
+        print('\nYour opponent is attacking...')
         time.sleep(2.5)
-        choice = available_computer_decision(gladiator_2, gladiator_1)
+        choice = available_computer_decision(gladiator_2)
         if choice == 'P':
             print(attack(gladiator_2, gladiator_1))
         elif choice == 'C':
@@ -78,10 +78,10 @@ def one_player():
             mega_kick(gladiator_2, gladiator_1)
         elif choice == 'H':
             heal(gladiator_2)
-            print('Healed for +5')
+            print('\nHealed for +5')
         elif choice == 'S':
             pass_turn(gladiator_2)
-            print('+30 RAGE')
+            print('\n+30 RAGE')
         glad_1(gladiator_1)
         if is_dead(gladiator_1):
             print(
@@ -152,8 +152,7 @@ def two_player():
 def main():
     while True:
         one_or_two_player = input(
-            'Would you like to play [O]NE or [T]WO player?\n\n').upper().strip(
-            )
+            'Would you like to play [O]NE or [T]WO player?\n').upper().strip()
         if one_or_two_player == 'O':
             print(one_player())
             break
