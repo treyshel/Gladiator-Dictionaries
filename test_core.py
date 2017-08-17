@@ -81,3 +81,10 @@ def test_mega_kick():
     }
     assert attacker == expect_attacker
     assert defender == expect_defender
+
+
+def test_rand_damage():
+    min_d, max_d = rand_damage(5, 25)
+    assert max_d >= min_d
+    assert min_d >= 5
+    assert max_d <= 25
